@@ -150,7 +150,7 @@ def traceroute(dest_name, resolve_dns=True):
                         # Чужой пакет, игнорируем и продолжаем ждать
                         continue
 
-                    # Если дошли сюда — ответ наш, обрабатываем
+                   
                     elapsed = (time.time() - start_time) * 1000
 
                     if icmp_type == 11:  # Time Exceeded
@@ -161,7 +161,7 @@ def traceroute(dest_name, resolve_dns=True):
                         hop_addr = addr[0]
                         reached = True
                     else:
-                        # Другие ICMP (например, административный запрет) – тоже считаем ответом
+                        # Другие ICMP  – тоже считаем ответом
                         print(f"{elapsed:.2f} ms", end=" ")
                         hop_addr = addr[0]
 
