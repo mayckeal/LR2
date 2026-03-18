@@ -130,13 +130,13 @@ def traceroute(dest_name, resolve_dns=True):
 
                     data, addr = recv_socket.recvfrom(512)
 
-                    # --- Анализ полученного ICMP-пакета ---
-                    # Определяем длину внешнего IP-заголовка (ответа)
+                    # Анализ полученного ICMP-пакета
+                    # Определяем длину внешнего IP-заголовка
                     outer_ip_hdr_len = (data[0] & 0x0F) * 4
                     icmp_type = data[outer_ip_hdr_len]
                     icmp_code = data[outer_ip_hdr_len + 1]
 
-                    # Извлекаем тело ICMP-сообщения (содержит исходный IP-заголовок + первые 8 байт UDP)
+                    # Извлекаем тело ICMP-сообщения
                     icmp_body = data[outer_ip_hdr_len + 8:]
                     # Длина исходного IP-заголовка (нашего пакета)
                     inner_ip_hdr_len = (icmp_body[0] & 0x0F) * 4
